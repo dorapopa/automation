@@ -12,6 +12,7 @@ import org.openqa.selenium.remote.internal.WebElementToJsonConverter;
 
 import javax.xml.ws.WebEndpoint;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by dopopa on 8/3/2015.
@@ -24,6 +25,7 @@ public class GmailTest {
     /*deschide pagina de mail */
     public static void before() {
      driver = new FirefoxDriver();
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     }
     /*deschide pagina de firefox si se inchide*/
     @AfterClass
@@ -42,10 +44,40 @@ public class GmailTest {
       /*identificam elem si il punem intr-o variabila*/
 
         WebElement userNameField = driver.findElement(By.id("Email"));
-        userNameField.sendKeys("antonia.im.jobs@gmail.com");
+        userNameField.sendKeys("dora2013popa@gmail.com");
 
 
         WebElement nextButton = driver.findElement(By.id("next"));
         nextButton.click();
+
+        WebElement userPassField = driver.findElement(By.id("Passwd"));
+        userPassField.sendKeys("d0raakcedo");
+
+        WebElement singInButton = driver.findElement(By.id("signIn"));
+        singInButton.click();
+
+
+       /* WebElement composeButton = driver.findElement(By.className("z0"));
+        composeButton.click();
+*/
+        WebElement clickButton = driver.findElement(By.xpath(".//*[@id=':it']/div/div"));
+        clickButton.click();
+
+
+        WebElement toField = driver.findElement(By.className("vO"));
+        toField.sendKeys("dora.popa@endava.com");
+
+        WebElement SubjectField = driver.findElement(By.className("aoT"));
+        SubjectField.sendKeys("test");
+
+
+        WebElement BodyField = driver.findElement(By.className("Am"));
+        BodyField.sendKeys("test");
+
+
+      WebElement SendButton = driver.findElement(By.className("aoO"));
+        SendButton.click();
+
+
     }
 }
